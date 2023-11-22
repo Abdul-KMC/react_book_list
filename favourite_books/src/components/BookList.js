@@ -8,9 +8,9 @@ function BookList(props) {
 
     return(
         <ul className='dispList'>
-            <li>{props.list[0]}</li>
-            <li>{props.list[1]}</li>
-            <li>{props.list[2]}</li>
+            {props.list.map((book, index) => (
+                <li key={index}>{book}</li>
+            ))}
         </ul>
     )
 }
