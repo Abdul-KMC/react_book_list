@@ -15,14 +15,20 @@ function App() {
 
   const addBook = (newBook) => {
     setBookList([...bookList, newBook]);
-}
+  }
+
+  const removeBook = (index) => {
+    const updatedList = [...bookList];
+    updatedList.splice(index, 1);
+    setBookList(updatedList);
+  }
 
   return (
     <div className="App">
       <h1 className="title">Favorite Books</h1>
       <h3 className="description">Add all your favorite books here.</h3>
       <AddBookForm updateList={addBook}/> 
-      <BookList list={bookList}/>
+      <BookList list={bookList} remBook={removeBook}/>
     </div>
   );
 }

@@ -9,7 +9,10 @@ function BookList(props) {
     return(
         <ul className='dispList'>
             {props.list.map((book, index) => (
-                <li key={index}>{book}</li>
+                <li key={index}>
+                    {book}
+                    <button onClick={handleCross}>X</button>
+                    </li>
             ))}
         </ul>
     )
