@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 
-export default function AddBookForm() {
+export default function AddBookForm(props) {
     
-    const [newBook, updateNewBook] = useState('Book title here');
+    const [newBook, updateNewBook] = useState('');
 
     const handleChange = (event) => {
         updateNewBook(event.target.value);
     }
 
-    const addBook = (event) => {
-        console.log("Add book working properly");
-    }
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      props.updateList(newBook);
+      updateNewBook('');
+    };
 
-  return (
-    <div>
-        <form>
-        <label>
-          Add book to your list 
-          <input type="text" value={newBook} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Add" onClick={addBook}/>
-      </form>
-    </div>
-  )
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Add book to your list
+            <input type="text" value={newBook} onChange={handleChange} />
+          </label>
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+    );
 }
 
 
