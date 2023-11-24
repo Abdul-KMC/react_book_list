@@ -19,7 +19,7 @@ export default function AddBookForm(props) {
       <div>
         <form onSubmit={handleSubmit}>
           <label>
-            Add book to your list
+            Enter Book Title
             <input type="text" value={newBook} onChange={handleChange} />
           </label>
           <input type="submit" value="Add" />

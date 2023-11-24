@@ -4,18 +4,18 @@ function BookList(props) {
 
     const handleCross = (index) => {
         props.remBook(index);
-      };
+    };
 
-    return(
+    return (
         <ul className='dispList'>
             {props.list.map((book, index) => (
                 <li key={index}>
                     {book}
-                    <button onClick={handleCross}>X</button>
-                    </li>
+                    <button onClick={() => handleCross(index)}>X</button>
+                </li>
             ))}
         </ul>
     )
 }
 
-export default BookList
+export default BookList;
