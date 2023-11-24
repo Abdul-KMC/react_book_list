@@ -11,10 +11,17 @@ import AddBookForm from './components/AddBookForm';
 
 function App() {
 
-  const [bookList, setBookList] = useState(["A Study in Scarlet & The Sign of Four", "The Hound of the Baskervilles & The Valley of Fear", "The Adventures of Sherlock Holmes"])
+  const [bookList, setBookList] = useState(["A Study in Scarlet & The Sign of Four", "The Hound of the Baskervilles & The Valley of Fear", "The Adventures of Sherlock Holmes"]);
+  const [newBook, updateNewBook] = useState('');
 
-  const addBook = (newBook) => {
+  const handleChange = (event) => {
+    updateNewBook(event.target.value);
+  }
+
+  const addBook = (event) => {
+    event.preventDefault();
     setBookList([...bookList, newBook]);
+    updateNewBook('');
   }
 
   const removeBook = (index) => {
@@ -27,7 +34,7 @@ function App() {
     <div className="App">
       <h1 className="title">Favorite Books</h1>
       <h3 className="description">Add all your favorite books here.</h3>
-      <AddBookForm updateList={addBook}/> 
+      <AddBookForm new={newBook} inputChange={handleChange} updateList={addBook}/> 
       <BookList list={bookList} remBook={removeBook}/>
     </div>
   );
